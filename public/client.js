@@ -1,12 +1,17 @@
 const {
     app,
-    BrowserWindow,
+    BrowserWindow
 } = require('electron');
+
+const IRC = require('irc-framework');
 
 const path = require('path');
 const url = require('url');
 
 let win;
+
+global.irc_client = new IRC.Client();
+global.irc_channels = {};
 
 function createWindow() {
     win = new BrowserWindow({
@@ -20,7 +25,7 @@ function createWindow() {
     win.toggleDevTools();
 
     const startUrl = process.env.ELECTRON_START_URL || url.format({
-        nodeIntegration: false,
+        nodeIntegration: true,
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file:',
         slashes: true,
