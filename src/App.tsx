@@ -1,5 +1,4 @@
-// @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import './App.css';
 import * as IRC from "irc-framework";
 const { getGlobal } = window.require("electron").remote;
@@ -10,27 +9,30 @@ const AppContext = React.createContext({
 
 type Props = { /* */ };
 type AppState = {
-    client: IRC.IrcClient
+    client: IRC.IrcClient,
+    ircsettings: { server: string, port: number, nick: string, channel: string}
 }
 
-class App extends Component<Props, AppState> {
+class App extends React.Component<Props, AppState> {
     constructor(props : Props) {
         super(props);
         this.state = {
-            client: getGlobal('irc_client')
+            client: getGlobal('irc_client'),
+            ircsettings: getGlobal('irc_settings')
         };
     };
     connectToServer = () => {
         const client = this.state.client;
+        const settings = this.state.ircsettings;
         if(!client.connected) {
             client.connect({
-               host: null,
-                port: 6667,
-                nick: null
+               host: settings.server,
+                port: settings.port,
+                nick: settings.nick
             });
 
             client.on('registered', () => {
-                var chan = client.channel(null);
+                var chan = client.channel(settings.channel);
                 chan.join();
                 chan.say('Hey! 🍿');
             });
@@ -62,3 +64,9 @@ class App extends Component<Props, AppState> {
 }
 
 export default App;
+
+declare global {
+    interface Window {
+        require: any;
+    }
+}

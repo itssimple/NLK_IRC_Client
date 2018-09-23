@@ -1,4 +1,5 @@
 .idea
-flow-typed
 node_modules
 .env
+public/dist
+yarn-error.log

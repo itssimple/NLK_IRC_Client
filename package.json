@@ -3,14 +3,10 @@
   "version": "0.0.1",
   "main": "public/client.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
-    "electron": "electron .",
-    "electron-dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && cross-env ELECTRON_START_URL=http://localhost:3000 electron .\""
+    "electron": "electron ."
   },
   "homepage": "./",
   "repository": {
@@ -20,17 +16,26 @@
   "author": "Chris Gårdenberg",
   "license": "BSD-3-Clause",
   "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
     "babel-cli": "^6.26.0",
     "babel-preset-flow": "^6.23.0",
-    "concurrently": "^4.0.1",
-    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
     "electron": "^2.0.9",
     "electron-builder": "^20.28.4",
-    "flow-bin": "^0.81.0",
-    "react-scripts": "^1.1.5",
-    "wait-on": "^3.0.1"
+    "electron-react-devtools": "^0.5.3",
+    "file-loader": "^2.0.0",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^0.23.0",
+    "typescript": "^3.0.3",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
+    "@types/node": "^10.10.3",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "dotenv": "^6.0.0",
     "irc-framework": "^3.1.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1"
