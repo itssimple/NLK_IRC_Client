@@ -12,7 +12,7 @@ const url = require('url');
 let win;
 
 global.irc_client = new IRC.Client();
-global.irc_channels = {};
+global.irc_channels = [];
 global.irc_settings = {
     server: process.env.IRCHOST,
     port: process.env.IRCPORT,
