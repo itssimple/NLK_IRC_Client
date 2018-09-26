@@ -9,8 +9,8 @@
 		"allowJs": true,
 		"moduleResolution": "node",
 		"skipDefaultLibCheck": true,
-		"baseUrl": "./"
+		"baseUrl": "."
 	},
-	"include": ["./src/App.tsx"],
+	"include": ["./src/**/*.tsx", "./src/**/*.ts"],
 	"exclude": ["node_modules"]
 }

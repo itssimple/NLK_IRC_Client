@@ -1,14 +1,12 @@
 import * as React from "react";
 import * as IRC from "irc-framework";
-import Icon from "antd/lib/icon";
-import Layout from "antd/lib/layout";
-import Button from "antd/lib/button";
+import { ChatWindow } from './Components/ChatWindow';
 import "antd/dist/antd.min.css";
-import { Mention } from "antd";
+import { Mention, Icon, Layout, Button } from "antd";
 
 const { getGlobal, Menu, MenuItem } = window.require("electron").remote;
 
-const { Sider, Content, Footer } = Layout;
+const { Header, Sider, Content, Footer } = Layout;
 
 const AppContext = React.createContext({
 	client: null
@@ -29,14 +27,6 @@ type AppState = {
 };
 
 class App extends React.Component<Props, AppState> {
-	constructor(props: Props) {
-		super(props);
-		this.state = {
-			client: getGlobal("irc_client"),
-			ircsettings: getGlobal("irc_settings"),
-			channels: getGlobal("irc_channels")
-		};
-	}
 	connectToServer = () => {
 		const client = this.state.client;
 		const settings = this.state.ircsettings;
@@ -63,6 +53,16 @@ class App extends React.Component<Props, AppState> {
 	logMenu = () => {
 		console.log(Menu.getApplicationMenu().items);
 	};
+
+	constructor(props: Props) {
+		super(props);
+		this.state = {
+			client: getGlobal("irc_client"),
+			ircsettings: getGlobal("irc_settings"),
+			channels: getGlobal("irc_channels")
+		};
+	}
+
 	render() {
 		return (
 			<AppContext.Provider value={this.state}>
@@ -81,8 +81,7 @@ class App extends React.Component<Props, AppState> {
 							</Button>
 							<br />
 							<Button onClick={this.disconnect} block>
-								<Icon type="logout" theme="outlined" />{" "}
-								Disconnect
+								<Icon type="logout" theme="outlined" /> Disconnect
 							</Button>
 							<br />
 							<Button onClick={this.logMenu} block>
@@ -90,16 +89,23 @@ class App extends React.Component<Props, AppState> {
 							</Button>
 						</Sider>
 						<Layout style={{ minHeight: "100%" }}>
+							<Header style={{background: "#dedede", padding: "5px", lineHeight: "unset", height: "unset"}}>For topics and shit</Header>
 							<Content style={{ padding: "5px" }}>
+                                <ChatWindow />
 								I'm an IRC client, herp derp!
 							</Content>
+                            <Footer style={{ background: "#dedede", padding: "5px" }}>
+                                <Content>
+                                    <Mention />
+                                </Content>
+                            </Footer>
 						</Layout>
+						<Sider width={200} style={{background: "#cecece", minHeight: "100%", padding: "5px"}}>
+							Users lol
+						</Sider>
+
 					</Layout>
-					<Footer style={{ background: "#999999" }}>
-						<Content>
-							<Mention />
-						</Content>
-					</Footer>
+
 				</Layout>
 			</AppContext.Provider>
 		);
