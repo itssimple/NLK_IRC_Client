@@ -1,43 +1,53 @@
 {
-  "name": "nlk-irc-client",
-  "version": "0.0.1",
-  "main": "public/client.js",
-  "scripts": {
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps",
-    "electron": "electron ."
-  },
-  "homepage": "./",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/itssimple/NLK_IRC_Client.git"
-  },
-  "author": "Chris Gårdenberg",
-  "license": "BSD-3-Clause",
-  "devDependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-cli": "^6.26.0",
-    "babel-preset-flow": "^6.23.0",
-    "css-loader": "^1.0.0",
-    "electron": "^2.0.9",
-    "electron-builder": "^20.28.4",
-    "file-loader": "^2.0.0",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "^0.23.0",
-    "typescript": "^3.0.3",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
-  },
-  "dependencies": {
-    "@types/node": "^10.10.3",
-    "@types/react": "^16.4.14",
-    "@types/react-dom": "^16.0.7",
-    "antd": "^3.9.3",
-    "dotenv": "^6.0.0",
-    "irc-framework": "^3.1.0",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1"
-  }
+	"name": "nlk-irc-client",
+	"version": "0.0.1",
+	"main": "public/client.js",
+	"scripts": {
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder",
+		"postinstall": "electron-builder install-app-deps",
+		"electron": "electron .",
+		"watch": "node node_modules/webpack/bin/webpack.js --watch --progress --verbose"
+	},
+	"homepage": "./",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/itssimple/NLK_IRC_Client.git"
+	},
+	"author": "Chris Gårdenberg",
+	"license": "BSD-3-Clause",
+	"devDependencies": {
+		"awesome-typescript-loader": "^5.2.1",
+		"babel-cli": "^6.26.0",
+		"babel-preset-flow": "^6.23.0",
+		"css-loader": "^1.0.0",
+		"electron": "^2.0.9",
+		"electron-builder": "^20.28.4",
+		"file-loader": "^2.0.0",
+		"source-map-loader": "^0.2.4",
+		"style-loader": "^0.23.0",
+		"typescript": "^3.0.3",
+		"webpack": "^4.19.1",
+		"webpack-cli": "^3.1.0",
+		"webpack-dev-server": "^3.1.8"
+	},
+	"dependencies": {
+		"@types/node": "^10.10.3",
+		"@types/react": "^16.4.14",
+		"@types/react-dom": "^16.0.7",
+		"antd": "^3.9.3",
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.4",
+		"babel-plugin-import": "^1.6.2",
+		"babel-plugin-lodash": "^3.3.4",
+		"babel-plugin-transform-object-assign": "^6.22.0",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"dotenv": "^6.0.0",
+		"irc-framework": "^3.1.0",
+		"react": "^16.5.1",
+		"react-dom": "^16.5.1"
+	}
 }
