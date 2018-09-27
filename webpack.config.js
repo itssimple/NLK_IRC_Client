@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
 	mode: "development",
 	entry: "./src/index.tsx",
@@ -8,6 +10,11 @@ module.exports = {
 	resolve: {
 		extensions: [".ts", ".tsx", ".js", ".jsx"]
 	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: 'public/index.html'
+		})
+	],
 	module: {
 		rules: [
 			{
@@ -22,6 +29,7 @@ module.exports = {
 					}
 				}
 			},
+			{ test: /\.less$/, use: ["style-loader", "css-loader", "less-loader"] },
 			{ test: /\.css$/, use: ["style-loader", "css-loader"] },
 			{ enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
 		]
