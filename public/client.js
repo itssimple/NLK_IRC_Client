@@ -29,6 +29,12 @@ function createWindow() {
         'web-security': false,
     });
 
+    win.webContents.on('dom-ready', () => {
+        setTimeout(() => {
+            win.webContents.send('ready') // send to renderer
+        }, 3000)
+    });
+
     win.toggleDevTools();
 
     const startUrl = process.env.ELECTRON_START_URL || url.format({
